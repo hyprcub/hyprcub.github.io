@@ -7,16 +7,16 @@ tags: cheatsheet
 # References
 
 - [Get Reverse-shell via Windows one-liner](https://www.hackingarticles.in/get-reverse-shell-via-windows-one-liner/)
+- [php-reverse-shell.php](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
 - Reverse shell cheat sheets:
-	- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md) is really awesome place to look for exotic shells
+	- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md) is a really awesome place to look for exotic shells
 	- [HighOn.Coffee](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 	- [pentestmonkey](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
-- [php-reverse-shell.php](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
 
 # General advices
 
-- Don't forget to check for other shells than `sh` or `bash`: `ash`, `bsh`, `csh`, `ksh`, `zsh`, `pdksh`, `tcsh`. And so one, be creative.
-- If your favorites `1234` or `1337` TCP ports don't work, try `80/tcp` or UDP ports as there's maybe filtering in place.
+- Don't forget to check for shells other than `sh` or `bash`: `ash`, `bsh`, `csh`, `ksh`, `zsh`, `pdksh`, `tcsh`. And so on, be creative.
+- If your favorites `1234` or `1337` TCP ports don't work, try `80/tcp` or UDP ports as there may be filtering in place.
 - In the following, replace `LHOST` with your IP and `LPORT` with your port.
 
 # Listeners
