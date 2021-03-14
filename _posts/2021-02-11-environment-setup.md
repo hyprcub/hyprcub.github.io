@@ -4,7 +4,7 @@ layout: post
 author: hyprcub
 tags: methodology
 ---
-When it comes to play with [Hack The Box](https://www.hackthebox.eu/) or [Try Hack Me](https://tryhackme.com/) I like to have my environment set up conviently.
+When it comes to play with [Hack The Box](https://www.hackthebox.eu/) or [Try Hack Me](https://tryhackme.com/) I like to have my environment set up conveniently.
 
 # Hack The Box
 
