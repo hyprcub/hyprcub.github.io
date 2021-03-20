@@ -1,6 +1,5 @@
 theme: jekyll-theme-hacker
 description: An awesome blog about hacking
 title: hyprcub rocks!
-hyprcub:
-  name: hyprcub
-  email: hyprcub@hyprcub.rocks
+author: hyprcub
+email: hyprcub@hyprcub.rocks
