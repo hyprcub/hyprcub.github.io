@@ -11,7 +11,7 @@ This [Try Hack Me box](https://tryhackme.com/room/dailybugle) features mainly SQ
 - crack it and use the credentials to log in the CMS
 - inject a one-line PHP reverse shell in Joomla's default template code
 - mine passwords to escalate to a regular user
-- abuse `sudo` and `yum`to get full privileges.
+- abuse `sudo` and `yum` to get full privileges.
 
 # Enumeration
 
