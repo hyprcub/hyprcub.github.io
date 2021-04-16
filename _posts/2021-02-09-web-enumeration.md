@@ -11,6 +11,7 @@ tags: cheatsheet
 | `curl -is http://$target/robots.txt`                              | Check the headers and `robots.txt` content |
 | `curl -iks http://$target/robots.txt`                             | Same if SSL enabled                        |
 | `curl -is http://$target` or *View Page Source* from your browser | Read the source code **carefully!**        |
+| `whatweb --no-errors -a 3 -v http://$target`                      | Recognises web technologies                |
 
 # Url Bruteforcing
 
@@ -18,22 +19,23 @@ tags: cheatsheet
 
 | List                                                                                 | # of lines | Description             |
 |--------------------------------------------------------------------------------------|------------|-------------------------|
-| `export dict=/usr/share/seclists/Discovery/Web-Content/common.txt`                   |       4660 | Directory/Page Wordlist |
-| `export dict=/usr/share/dirb/wordlists/big.txt`                                      |      20469 | Directory/Page Wordlist |
-| `export dict=/usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt` |     207629 | Directory/Page Wordlist |
+| `export dict=/usr/share/seclists/Discovery/Web-Content/common.txt`                   | 4660       | Directory/Page Wordlist |
+| `export dict=/usr/share/dirb/wordlists/big.txt`                                      | 20469      | Directory/Page Wordlist |
+| `export dict=/usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt` | 207629     | Directory/Page Wordlist |
 
 ## Commands
 
-| Command                                                                                  | Description                                 |
-|------------------------------------------------------------------------------------------|---------------------------------------------|
-| `ffuf -w $dict -u http://$target/FUZZ -c -t 50`                                          | Colored output, 50 threads                  |
-| `ffuf -w $dict -u http://$target/FUZZ -c -t 50 -o url_bruteforce.md -of md`              | Saves results to a Markdown file            |
-| `ffuf -w $dict -u http://$target/FUZZ -c -t 50 -o url_bruteforce.md -of md -x .txt,.php` | Tests also for extensions `.txt` and `.php` |
+| Command                                                                     | Description                                 |
+|-----------------------------------------------------------------------------|---------------------------------------------|
+| `ffuf -w $dict -u http://$target/FUZZ -c -t 50`                             | Colored output, 50 threads                  |
+| `ffuf -w $dict -u http://$target/FUZZ -c -t 50 -o url_bruteforce.md -of md` | Saves results to a Markdown file            |
+| `ffuf -w $dict -u http://$target/FUZZ -c -t 50 -x .txt,.php`                | Tests also for extensions `.txt` and `.php` |
  
 # Website Crawling
 
 ## References
 
+- Credits to [Stök](https://twitter.com/stokfredrik)
 - [Hakrawler](https://github.com/hakluke/hakrawler)
 - [httpx](https://github.com/projectdiscovery/httpx)
 
@@ -57,4 +59,6 @@ go get github.com/hakluke/hakrawler && GO111MODULE=on go get -v github.com/proje
 | `nmap $target -p 80 -sV --script http-shellshock`                                    | Execute some basic enumeration scripts and look for shellshock vulnerability       |
 | `wpscan --url http://$target`                                                        | Scan a WordPress installation using [wpscan](https://github.com/wpscanteam/wpscan) |
 
-Look also for any *you_name_it_CMS_scanner*, like [droopescan](https://github.com/droope/droopescan) which can scan Drupal installation.
+Look also for any *you_name_it_CMS_scanner*, like:
+- [Droopescan](https://github.com/droope/droopescan) which can scan Drupal installation
+- [OWASP JoomScan](https://github.com/OWASP/joomscan) which can scan JoomScan CMS.
