@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<p>Here you'll find: cheat sheets, methodologies, writeups and anything related to pentesting.</p>
+
+<div class="row">
+    <div class="column">
+        <h1>Tricks</h1>
+        <ul>
+            {% for post in site.tags.trick %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <h1>Cheat sheets</h1>
+        <ul>
+            {% for post in site.tags.cheatsheet %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="column">
+        <h1>Methodology</h1>
+        <ul>
+            {% for post in site.tags.methodology %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <h1>Writeups</h1>
+        <ul> 
+            {% for post in site.tags.writeup %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
