@@ -9,7 +9,7 @@ tags: cheatsheet
 | Command                                                           | Description                                |
 |-------------------------------------------------------------------|--------------------------------------------|
 | `curl -is http://$target/robots.txt`                              | Check the headers and `robots.txt` content |
-| `curl -iks http://$target/robots.txt`                             | Same if SSL enabled                        |
+| `curl -iks https://$target/robots.txt`                            | Same if SSL enabled                        |
 | `curl -is http://$target` or *View Page Source* from your browser | Read the source code **carefully!**        |
 | `whatweb --no-errors -a 3 -v http://$target`                      | Recognises web technologies                |
 
