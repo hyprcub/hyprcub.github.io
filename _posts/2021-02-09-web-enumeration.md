@@ -19,9 +19,9 @@ tags: cheatsheet
 
 | List                                                                                 | # of lines | Description             |
 |--------------------------------------------------------------------------------------|------------|-------------------------|
-| `export dict=/usr/share/seclists/Discovery/Web-Content/common.txt`                   | 4660       | Directory/Page Wordlist |
-| `export dict=/usr/share/dirb/wordlists/big.txt`                                      | 20469      | Directory/Page Wordlist |
-| `export dict=/usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt` | 207629     | Directory/Page Wordlist |
+| `export dict=/usr/share/seclists/Discovery/Web-Content/common.txt`                   | ~5k        | Directory/Page Wordlist |
+| `export dict=/usr/share/dirb/wordlists/big.txt`                                      | ~20k       | Directory/Page Wordlist |
+| `export dict=/usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt` | ~200k      | Directory/Page Wordlist |
 
 ## Commands
 
