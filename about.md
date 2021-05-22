@@ -11,4 +11,5 @@ I'm an [OSCP](https://www.offensive-security.com/pwk-oscp/) holder, a mathematic
 - [Twitter](https://twitter.com/{{ site.twitter }})
 - [Try Hack Me!](https://tryhackme.com/p/hyprcub)
 - [Hack The Box](https://www.hackthebox.eu/home/users/profile/185254#)
+- [CryptoHack](https://cryptohack.org/user/hyprcub/)
 - [Wechall](http://www.wechall.net/profile/hyprcub)
