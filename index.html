@@ -18,6 +18,14 @@ layout: default
             <li><a href="{{ post.url }}">{{ post.title }}</a></li>
             {% endfor %}
         </ul>
+
+        <h1>References</h1>
+        <ul>
+            {% for post in site.tags.ref %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+
     </div>
     <div class="column">
         <h1>Methodology</h1>

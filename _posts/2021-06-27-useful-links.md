@@ -2,7 +2,7 @@
 title: Useful Links
 layout: post
 author: hyprcub
-tags: cheatsheet
+tags: ref
 ---
 
 Here you'll find links I've found very useful. I'll keep adding some.
