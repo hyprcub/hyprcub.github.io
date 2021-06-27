@@ -5,9 +5,9 @@ author: hyprcub
 tags: ref
 ---
 
-Here you'll find links I've found very useful. I'll keep adding some.
+Here you'll find ressources I've found very useful. I'll keep adding some.
 
- # Reverse Shells
+# Reverse Shells
  
  - [Reverse Shell Generator](https://www.revshells.com/)
  - [PayloadsAllTheThings - Reverse Shell Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
