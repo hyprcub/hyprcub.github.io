@@ -8,6 +8,12 @@ In many cases you'll need to dump the content of some databases. Here is how to 
 
 Also, for privilege escalation purpose or just information gathering, you may need to read the content of some files using different privileges (SUID or `sudo`).
 
+# References
+
+* https://book.hacktricks.xyz/pentesting/pentesting-mysql
+* https://www.postgresqltutorial.com/postgresql-show-tables
+* https://sqlite.org/cli.html
+
 # MySQL
 
 ## Enumerate Databases[^mysql]
@@ -62,7 +68,3 @@ Also, for privilege escalation purpose or just information gathering, you may ne
 | `.import [filename] mytable;`   | import the file content                 |
 | `select * from mytable`         | show the content of the import          |
 
-
-[^mysql]: https://book.hacktricks.xyz/pentesting/pentesting-mysql
-[^postgresql]: https://www.postgresqltutorial.com/postgresql-show-tables/
-[^sqlite]: https://sqlite.org/cli.html
