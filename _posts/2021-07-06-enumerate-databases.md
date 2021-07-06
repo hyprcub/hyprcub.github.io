@@ -10,13 +10,10 @@ Also, for privilege escalation purpose or just information gathering, you may ne
 
 # References
 
-* https://book.hacktricks.xyz/pentesting/pentesting-mysql
-* https://www.postgresqltutorial.com/postgresql-show-tables
-* https://sqlite.org/cli.html
 
 # MySQL
 
-## Enumerate Databases[^mysql]
+## Enumerate Databases[^1]
 
 | Command                  | Description                          |
 | ---                      | ---                                  |
@@ -31,7 +28,7 @@ Also, for privilege escalation purpose or just information gathering, you may ne
 
 # PostgreSQL
 
-## Enumerate Databases[^postgresql]
+## Enumerate Databases[^2]
 
 | Command                  | Description                          |
 | ---                      | ---                                  |
@@ -48,7 +45,7 @@ Also, for privilege escalation purpose or just information gathering, you may ne
 | `copy demo from '[FILENAME]';` | insert file content in the table |
 | `select * from demo;`          | show the content                 |
 
-# SQLite[^sqlite]
+# SQLite[^3]
 
 ## Enumerate Databases
 
@@ -68,3 +65,7 @@ Also, for privilege escalation purpose or just information gathering, you may ne
 | `.import [filename] mytable;`   | import the file content                 |
 | `select * from mytable`         | show the content of the import          |
 
+
+[^1]: [https://book.hacktricks.xyz/pentesting/pentesting-mysql](https://book.hacktricks.xyz/pentesting/pentesting-mysql)
+[^2]: [https://www.postgresqltutorial.com/postgresql-show-tables](https://www.postgresqltutorial.com/postgresql-show-tables)
+[^3]: [https://sqlite.org/cli.html](https://sqlite.org/cli.html)
