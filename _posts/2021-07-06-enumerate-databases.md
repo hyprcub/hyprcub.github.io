@@ -63,6 +63,6 @@ Also, for privilege escalation purpose or just information gathering, you may ne
 | `select * from mytable`         | show the content of the import          |
 
 
-[^mysql]: (https://book.hacktricks.xyz/pentesting/pentesting-mysql)
-[^postgresql]: (https://www.postgresqltutorial.com/postgresql-show-tables/)
-[^sqlite]: (https://sqlite.org/cli.html)
+[^mysql]: https://book.hacktricks.xyz/pentesting/pentesting-mysql
+[^postgresql]: https://www.postgresqltutorial.com/postgresql-show-tables/
+[^sqlite]: https://sqlite.org/cli.html
